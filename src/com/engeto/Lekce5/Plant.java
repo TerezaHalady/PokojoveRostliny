@@ -9,7 +9,15 @@ public class Plant {
     LocalDate watering;
     int frequencyOfWatering;
 
-    public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) {
+    public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantExceptions {
+        if (getFrequencyOfWatering() <= 0) {                                        // zadání zálivky nesmí být menší nebo rovno 0
+            throw new PlantExceptions("Zadané číslo musí být větší než 0");    //Musím vytvořit konstruktor pro zadání textu
+        }
+
+        if (watering.isAfter(LocalDate.now())) {
+            throw new PlantExceptions("Zadané datum nesmí být starší než zasazení rostliny");
+        }
+
         this.name = name;
         this.notes = notes;
         this.planted = planted;
@@ -62,13 +70,21 @@ public class Plant {
         this.frequencyOfWatering = frequencyOfWatering;
     }
 
-    public Plant(String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) {
+    public Plant(String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantExceptions {
+
+        if (getFrequencyOfWatering() <= 0) {                                        // zadání zálivky nesmí být menší nebo rovno 0
+            throw new PlantExceptions("Zadané číslo musí být větší než 0");    //Musím vytvořit konstruktor pro zadání textu
+        }
+
+        if (watering.isAfter(LocalDate.now())) {
+            throw new PlantExceptions("Zadané datum nesmí být starší než zasazení rostliny");
+        }
         this.notes = new String();
         this.planted = LocalDate.now();
-        this.watering = LocalDate.now();
-        this.frequencyOfWatering = 7;
+        this.watering =LocalDate.now();
+        this.frequencyOfWatering =7;
     }
-
+       
        public String getWateringInfo() {
         return "Plant" +
                 "name='" + name + '\'' +
