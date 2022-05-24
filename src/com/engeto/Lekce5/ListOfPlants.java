@@ -2,6 +2,7 @@ package com.engeto.Lekce5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ListOfPlants {
     private List<Plant> seznamRostlin = new ArrayList<>();   //import List
@@ -15,4 +16,6 @@ public class ListOfPlants {
     }
 
     // chybí metoda na získání rostliny na zadaném indexu
+    // public String getRostlinu (Plant plant) {}
+
 }
